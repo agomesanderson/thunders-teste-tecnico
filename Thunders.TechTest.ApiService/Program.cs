@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using Thunders.TechTest.ApiService;
+using Thunders.TechTest.ApiService.Infra.Database;
 using Thunders.TechTest.OutOfBox.Database;
 using Thunders.TechTest.OutOfBox.Queues;
 
@@ -20,7 +20,9 @@ if (features.UseMessageBroker)
 
 if (features.UseEntityFramework)
 {
-    builder.Services.AddSqlServerDbContext<DbContext>(builder.Configuration);
+    builder.Services.AddSqlServerDbContext<TollDbContext>(builder.Configuration);
+
+    builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 }
 
 

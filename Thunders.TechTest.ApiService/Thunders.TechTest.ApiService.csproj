@@ -15,4 +15,11 @@
     <ProjectReference Include="..\Thunders.TechTest.ServiceDefaults\Thunders.TechTest.ServiceDefaults.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="App\" />
+    <Folder Include="CrossCutting\" />
+    <Folder Include="Infra\Migrations\" />
+  </ItemGroup>
+
 </Project>
