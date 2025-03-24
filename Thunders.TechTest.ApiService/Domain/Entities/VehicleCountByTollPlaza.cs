@@ -6,16 +6,16 @@ using Thunders.TechTest.ApiService.Domain.Enums;
 namespace Thunders.TechTest.ApiService.Domain.Entities
 {
     [Table("VehicleCountByTollPlaza")]
-    public class VehicleCountByTollPlaza : BaseReportEintity
+    public class VehicleCountByTollPlaza : BaseEntity
     {
         [Required]
         [StringLength(100)]
-        public string TollPlaza { get; set; } = null!;
+        public string TollPlaza { get; private init; } = null!;
 
         [Required]
-        public VehicleType VehicleType { get; set; }
+        public VehicleType VehicleType { get; private init; }
 
         [Required]
-        public int VehicleCount { get; set; }
+        public int VehicleCount { get; private init; }
     }
 }

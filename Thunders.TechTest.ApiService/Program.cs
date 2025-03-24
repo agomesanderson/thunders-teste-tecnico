@@ -1,5 +1,8 @@
+using Microsoft.Extensions.Configuration;
 using Thunders.TechTest.ApiService;
 using Thunders.TechTest.ApiService.Infra.Database;
+using Thunders.TechTest.ApiService.Infra.Database.Interfaces;
+using Thunders.TechTest.ApiService.Injections;
 using Thunders.TechTest.OutOfBox.Database;
 using Thunders.TechTest.OutOfBox.Queues;
 
@@ -25,6 +28,8 @@ if (features.UseEntityFramework)
     builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 }
 
+builder.Services.AddServices();
+builder.Services.AddRepositories();
 
 var app = builder.Build();
 

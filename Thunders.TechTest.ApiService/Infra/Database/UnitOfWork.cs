@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Thunders.TechTest.ApiService.Domain.Entities;
+using Thunders.TechTest.ApiService.Infra.Database.Interfaces;
 
 namespace Thunders.TechTest.ApiService.Infra.Database
 {
@@ -7,7 +8,7 @@ namespace Thunders.TechTest.ApiService.Infra.Database
     {
         private readonly DbContext _context;
 
-        //public IRepository<TollTransaction> TollTransactionRepository { get; }
+        public IBaseRepository<TollTransaction> TollTransactionRepository { get; }
         //public IRepository<HourlyRevenueByCityReport> HourlyRevenueByCityReportRepository { get; }
         //public IRepository<TopEarningTollPlazasReport> TopEarningTollPlazasReportRepository { get; }
         //public IRepository<VehicleCountByTollPlazaReport> VehicleCountByTollPlazaReportRepository { get; }
@@ -15,7 +16,7 @@ namespace Thunders.TechTest.ApiService.Infra.Database
         public UnitOfWork(DbContext context)
         {
             _context = context;
-            //TollTransactionRepository = new Repository<TollTransaction>(context);
+            TollTransactionRepository = new BaseRepository<TollTransaction>(context);
             //HourlyRevenueByCityReportRepository = new Repository<HourlyRevenueByCityReport>(context);
             //TopEarningTollPlazasReportRepository = new Repository<TopEarningTollPlazasReport>(context);
             //VehicleCountByTollPlazaReportRepository = new Repository<VehicleCountByTollPlazaReport>(context);

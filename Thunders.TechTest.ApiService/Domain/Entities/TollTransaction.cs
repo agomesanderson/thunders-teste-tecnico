@@ -9,25 +9,46 @@ namespace Thunders.TechTest.ApiService.Domain.Entities
     public class TollTransaction : BaseEntity
     {
         [Required]
-        public DateTime UsageTime { get; set; }
+        public DateTime UsageTime { get; private init; }
 
         [Required]
         [StringLength(100)]
-        public string TollPlaza { get; set; } = null!;
+        public string TollPlaza { get; private init; } = null!;
 
         [Required]
         [StringLength(100)]
-        public string City { get; set; } = null!;
+        public string City { get; private init; } = null!;
 
         [Required]
         [StringLength(50)]
-        public FederationUnit State { get; set; }
+        public FederationUnit State { get; private init; }
 
         [Required]
         [Column(TypeName = "decimal(10,2)")]
-        public decimal AmountPaid { get; set; }
+        public decimal AmountPaid { get; private init; }
 
         [Required]
-        public VehicleType VehicleType { get; set; }
+        public VehicleType VehicleType { get; private init; }
+
+        public static TollTransaction Create(
+            Guid id,
+            DateTime usageTime, 
+            string tollPlaza, 
+            string city, 
+            FederationUnit state, 
+            decimal amountPaid, 
+            VehicleType vehicleType)
+        {
+            return new()
+            {
+                Id = id,
+                UsageTime = usageTime,
+                TollPlaza = tollPlaza,
+                City = city,
+                State = state,
+                AmountPaid = amountPaid,
+                VehicleType = vehicleType
+            };
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Thunders.TechTest.ApiService.Domain.Entities.Base
     public class BaseEntity
     {
         [Key]
-        public Guid Id { get; } = Guid.NewGuid();
+        public Guid Id { get; init; }
 
         [Required]
         public DateTime CreatedAt { get; } = DateTime.UtcNow;

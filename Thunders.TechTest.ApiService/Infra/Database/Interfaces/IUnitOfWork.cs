@@ -1,10 +1,10 @@
 ﻿using Thunders.TechTest.ApiService.Domain.Entities;
 
-namespace Thunders.TechTest.ApiService.Infra.Database
+namespace Thunders.TechTest.ApiService.Infra.Database.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        //IRepository<TollTransaction> TollTransactionRepository { get; }
+        BaseRepository<TollTransaction> TollTransactionRepository { get; }
         //IRepository<HourlyRevenueByCityReport> HourlyRevenueByCityReportRepository { get; }
         //IRepository<TopEarningTollPlazasReport> TopEarningTollPlazasReportRepository { get; }
         //IRepository<VehicleCountByTollPlazaReport> VehicleCountByTollPlazaReportRepository { get; }
