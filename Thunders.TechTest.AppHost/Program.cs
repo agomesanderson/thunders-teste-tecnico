@@ -1,7 +1,3 @@
-using DotNetEnv;
-
-Env.Load();
-
 var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");

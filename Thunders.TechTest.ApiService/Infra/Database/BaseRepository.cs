@@ -8,10 +8,10 @@ namespace Thunders.TechTest.ApiService.Infra.Database
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        protected readonly DbContext _context;
+        protected readonly TollDbContext _context;
         protected readonly DbSet<T> _dbSet;
 
-        public BaseRepository(DbContext context)
+        public BaseRepository(TollDbContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();

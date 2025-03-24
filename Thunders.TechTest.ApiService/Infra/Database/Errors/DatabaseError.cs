@@ -5,6 +5,6 @@ namespace Thunders.TechTest.ApiService.Infra.Database.Errors
 {
     public class DatabaseError(string Msg) : Error(Code, Msg)
     {
-        private new const string Code = ErrorCodes.DbError;
+        private new const string Code = ErrorCodes.DatabaseError;
     }
 }

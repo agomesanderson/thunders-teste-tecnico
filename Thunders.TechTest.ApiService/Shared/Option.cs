@@ -33,7 +33,7 @@
     {
         public Some(TSome value) => Value = value;
 
-        public override bool HasValue => true;
+        public override bool HasValue => Value is not null;
 
         public override TSome Value { get; }
 

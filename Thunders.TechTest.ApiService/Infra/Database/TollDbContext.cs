@@ -22,5 +22,4 @@ namespace Thunders.TechTest.ApiService.Infra.Database
             modelBuilder.Entity<VehicleCountByTollPlaza>().ToTable("VehicleCountByTollPlaza");
         }
     }
-
 }

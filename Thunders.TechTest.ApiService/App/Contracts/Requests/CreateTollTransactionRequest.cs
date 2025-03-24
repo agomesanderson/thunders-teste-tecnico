@@ -12,7 +12,7 @@ namespace Thunders.TechTest.ApiService.App.Contracts.Requests
         [Required, MaxLength(100)]
         public string TollPlaza { get; init; } = null!;
 
-        [Required, MaxLength(100), RegularExpression(Regex.OnlyLetters)]
+        [Required, MaxLength(100)]
         public string City { get; init; } = null!;
 
         [Required, EnumDataType(typeof(FederationUnit))]

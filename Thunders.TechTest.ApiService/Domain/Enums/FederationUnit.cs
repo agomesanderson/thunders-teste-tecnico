@@ -1,7 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace Thunders.TechTest.ApiService.Domain.Enums
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum FederationUnit
     {
         [EnumMember(Value = nameof(AM))] AM,

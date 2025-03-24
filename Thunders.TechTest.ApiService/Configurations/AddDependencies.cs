@@ -1,13 +1,15 @@
-﻿using Thunders.TechTest.ApiService.Infra.Repositories;
+﻿using Thunders.TechTest.ApiService.App.Services;
+using Thunders.TechTest.ApiService.App.Services.Interfaces;
+using Thunders.TechTest.ApiService.Infra.Repositories;
 using Thunders.TechTest.ApiService.Infra.Repositories.Interfaces;
 
-namespace Thunders.TechTest.ApiService.Injections
+namespace Thunders.TechTest.ApiService.Configurations
 {
-    public static class AddInjections
+    public static class AddDependencies
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ITollTransactionRepository, TollTransactionRepository>();
+            services.AddScoped<ICreateTollTransactionService, CreateTollTransactionService>();
 
             return services;
         }

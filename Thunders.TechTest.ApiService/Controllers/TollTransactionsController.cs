@@ -10,7 +10,7 @@ namespace Thunders.TechTest.ApiService.Controllers
     [ApiController]
     [ApiVersion("1")]
     [SwaggerTag("Criação de transação de pagamento")]
-    [Route("v{version:apiVersion}/toll-transactions")]
+    [Route("v1/toll-transactions")]
     public class TollTransactionsController : ControllerBase
     {
         /// <summary>

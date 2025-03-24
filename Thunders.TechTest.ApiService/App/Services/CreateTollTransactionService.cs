@@ -51,6 +51,7 @@ namespace Thunders.TechTest.ApiService.App.Services
                 );
 
                 await _unitOfWork.TollTransactionRepository.InsertAsync(tollTransaction, cancellationToken);
+                await _unitOfWork.SaveAsync();
 
                 _logger.LogInformation("CreateTollTransactionService finished");
 
