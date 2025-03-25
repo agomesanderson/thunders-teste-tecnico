@@ -5,5 +5,6 @@
         private const string Prefix = "TTT";
         public const string DatabaseError = $"{Prefix}001";
         public const string UnexpectedError = $"{Prefix}002";
+        public const string NotFound = $"{Prefix}003";
     }
 }

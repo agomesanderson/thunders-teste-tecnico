@@ -14,5 +14,21 @@ namespace Thunders.TechTest.ApiService.Domain.Entities
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalRevenue { get; private init; }
+
+        [Required]
+        public Guid ReportId { get; private init; }
+
+        public static TopEarningTollPlazas Create(
+            string tollPlaza, 
+            decimal totalRevenue, 
+            Guid reportId)
+        {
+            return new()
+            {
+                TollPlaza = tollPlaza,
+                TotalRevenue = totalRevenue,
+                ReportId = reportId
+            };
+        }
     }
 }

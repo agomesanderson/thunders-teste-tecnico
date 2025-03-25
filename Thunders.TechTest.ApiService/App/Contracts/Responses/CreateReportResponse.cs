@@ -2,7 +2,7 @@
 
 namespace Thunders.TechTest.ApiService.App.Contracts.Responses
 {
-    public record CreateTollTransactionResponse
+    public record CreateReportResponse
     {
         public Guid Id { get; init; }
         public ReportType Type { get; init; }

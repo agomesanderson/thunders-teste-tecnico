@@ -17,5 +17,23 @@ namespace Thunders.TechTest.ApiService.Domain.Entities
 
         [Required]
         public int VehicleCount { get; private init; }
+
+        [Required]
+        public Guid ReportId { get; private init; }
+
+        public static VehicleCountByTollPlaza Create(
+            string tollPlaza, 
+            VehicleType vehicleType, 
+            int vehicleCount, 
+            Guid reportId)
+        {
+            return new()
+            {
+                TollPlaza = tollPlaza,
+                VehicleType = vehicleType,
+                VehicleCount = vehicleCount,
+                ReportId = reportId
+            };
+        }
     }
 }

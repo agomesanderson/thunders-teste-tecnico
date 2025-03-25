@@ -17,5 +17,23 @@ namespace Thunders.TechTest.ApiService.Domain.Entities
         [Required]
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalRevenue { get; private init; }
+
+        [Required]
+        public Guid ReportId { get; private init; }
+
+        public static HourlyRevenueByCity Create(
+            string city, 
+            DateTime hour, 
+            decimal totalRevenue, 
+            Guid reportId)
+        {
+            return new()
+            {
+                City = city,
+                Hour = hour,
+                TotalRevenue = totalRevenue,
+                ReportId = reportId
+            };
+        }
     }
 }

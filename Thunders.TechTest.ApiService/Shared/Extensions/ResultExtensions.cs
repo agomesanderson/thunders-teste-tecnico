@@ -31,6 +31,7 @@ namespace Thunders.TechTest.ApiService.Shared.Extensions
         {
             [ErrorCodes.DatabaseError] = HttpStatusCode.InternalServerError,
             [ErrorCodes.UnexpectedError] = HttpStatusCode.InternalServerError,
+            [ErrorCodes.NotFound] = HttpStatusCode.NotFound
         };
     }
 }

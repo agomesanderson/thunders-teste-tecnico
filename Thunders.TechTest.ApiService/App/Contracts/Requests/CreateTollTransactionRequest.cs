@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Thunders.TechTest.ApiService.Domain.Enums;
-using Thunders.TechTest.ApiService.Shared.Constants;
 
 namespace Thunders.TechTest.ApiService.App.Contracts.Requests
 {
