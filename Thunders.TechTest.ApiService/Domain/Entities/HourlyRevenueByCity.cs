@@ -12,7 +12,7 @@ namespace Thunders.TechTest.ApiService.Domain.Entities
         public string City { get; private init; } = null!;
 
         [Required]
-        public DateTime Hour { get; private init; }
+        public int Time { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(10,2)")]
@@ -23,14 +23,14 @@ namespace Thunders.TechTest.ApiService.Domain.Entities
 
         public static HourlyRevenueByCity Create(
             string city, 
-            DateTime hour, 
+            int hour, 
             decimal totalRevenue, 
             Guid reportId)
         {
             return new()
             {
                 City = city,
-                Hour = hour,
+                Time = hour,
                 TotalRevenue = totalRevenue,
                 ReportId = reportId
             };

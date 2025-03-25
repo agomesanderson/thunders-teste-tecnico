@@ -18,15 +18,25 @@ namespace Thunders.TechTest.ApiService.Domain.Entities
         [Required]
         public Guid ReportId { get; private init; }
 
+        [Required]
+        public int Month { get; set; }
+
+        [Required]
+        public int Year { get; set; }
+
         public static TopEarningTollPlazas Create(
             string tollPlaza, 
             decimal totalRevenue, 
+            int month,
+            int year,
             Guid reportId)
         {
             return new()
             {
                 TollPlaza = tollPlaza,
                 TotalRevenue = totalRevenue,
+                Month = month,
+                Year = year,
                 ReportId = reportId
             };
         }

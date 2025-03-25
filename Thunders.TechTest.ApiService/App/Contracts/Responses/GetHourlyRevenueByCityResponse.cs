@@ -2,8 +2,8 @@
 {
     public record GetHourlyRevenueByCityResponse
     {
-        public string City { get; set; } = null!;
-        public int Hour { get; set; }
-        public decimal TotalAmount { get; set; }
+        public string City { get; init; } = null!;
+        public int Hour { get; init; }
+        public decimal TotalRevenue { get; init; }
     }
 }

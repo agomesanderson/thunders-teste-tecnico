@@ -65,13 +65,61 @@ namespace Thunders.TechTest.ApiService.Controllers
               onFailure: errors => errors.ToHttpErrors());
         }
 
+        /// <summary>
+        /// Criação de relatório vehicle count
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="service"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet("report-vehicle-count/{id:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateReport(
+        public async Task<IActionResult> CreateReportVehicleCount(
             [FromRoute, Required] Guid id,
             [FromServices] IGetVehicleCountByTollPlazaService service,
+            CancellationToken cancellationToken = default
+        )
+        {
+            var result = await service.Execute(id, cancellationToken);
+
+            return result.Match<IActionResult>(
+              onSuccess: response => Ok(response.Value),
+              onFailure: errors => errors.ToHttpErrors());
+        }
+
+        /// <summary>
+        /// Criação de relatório top earning
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="service"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpGet("report-top-earning/{id:guid}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateReportTopEarning(
+            [FromRoute, Required] Guid id,
+            [FromServices] IGetTopEarningTollPlazaService service,
+            CancellationToken cancellationToken = default
+        )
+        {
+            var result = await service.Execute(id, cancellationToken);
+
+            return result.Match<IActionResult>(
+              onSuccess: response => Ok(response.Value),
+              onFailure: errors => errors.ToHttpErrors());
+        }
+
+        [HttpGet("report-hourly-revenue/{id:guid}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateReportHourlyRevenue(
+            [FromRoute, Required] Guid id,
+            [FromServices] IGetHourlyRevenueService service,
             CancellationToken cancellationToken = default
         )
         {

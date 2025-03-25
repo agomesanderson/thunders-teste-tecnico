@@ -26,7 +26,7 @@ namespace Thunders.TechTest.ApiService.App.Services
         {
             try
             {
-                _logger.LogInformation("CreateVehicleCountByTollPlazaService started");
+                _logger.LogInformation("GetVehicleCountByTollPlazaService started");
 
                 var vehicleCountByTollPlazaReportResult = await _unitOfWork.VehicleCountByTollPlazaRepository.GetReportAsync(id, cancellationToken);
 
@@ -56,7 +56,7 @@ namespace Thunders.TechTest.ApiService.App.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "CreateVehicleCountByTollPlazaService failed");
+                _logger.LogError(ex, "GetVehicleCountByTollPlazaService failed");
 
                 return Result<List<GetVehicleCountByTollPlazaResponse>>.Fail(
                     new UnexpectedError(ex.InnerException?.Message ?? ex.Message)

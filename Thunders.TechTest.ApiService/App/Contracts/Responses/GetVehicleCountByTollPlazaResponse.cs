@@ -4,8 +4,8 @@ namespace Thunders.TechTest.ApiService.App.Contracts.Responses
 {
     public record GetVehicleCountByTollPlazaResponse
     {
-        public string TollPlaza { get; set; } = null!;
-        public VehicleType VehicleType { get; set; }
-        public int Count { get; set; }
+        public string TollPlaza { get; init; } = null!;
+        public VehicleType VehicleType { get; init; }
+        public int Count { get; init; }
     }
 }

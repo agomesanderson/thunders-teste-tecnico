@@ -12,7 +12,12 @@ namespace Thunders.TechTest.ApiService.Configurations
             services.AddScoped<ICreateTollTransactionService, CreateTollTransactionService>();
             services.AddScoped<ICreateReportService, CreateReportService>();
             services.AddScoped<ICreateVehicleCountByTollPlazaService, CreateVehicleCountByTollPlazaService>();
+            services.AddScoped<ICreateTopEarningTollPlazaService, CreateTopEarningTollPlazaService>();
+            services.AddScoped<ICreateHourlyRevenueService, CreateHourlyRevenueService>();
+
             services.AddScoped<IGetVehicleCountByTollPlazaService, GetVehicleCountByTollPlazaService>();
+            services.AddScoped<IGetTopEarningTollPlazaService, GetTopEarningTollPlazaService>();
+            services.AddScoped<IGetHourlyRevenueService, GetHourlyRevenueService>();
 
             return services;
         }

@@ -1,7 +1,6 @@
 ﻿using Rebus.Handlers;
 using Thunders.TechTest.ApiService.App.Contracts.Enums;
 using Thunders.TechTest.ApiService.App.Contracts.Messages;
-using Thunders.TechTest.ApiService.App.Contracts.Requests;
 using Thunders.TechTest.ApiService.App.Services;
 using Thunders.TechTest.ApiService.App.Services.Interfaces;
 
@@ -11,14 +10,20 @@ namespace Thunders.TechTest.ApiService.App.Consumer
     {
         private readonly ILogger<CreateReportService> _logger;
         private readonly ICreateVehicleCountByTollPlazaService _createVehicleCountByTollPlazaService;
+        private readonly ICreateHourlyRevenueService _createHourlyRevenueService;
+        private readonly ICreateTopEarningTollPlazaService _createTopEarningTollPlazaService;
 
         public ReportConsumer(
             ILogger<CreateReportService> logger,
-            ICreateVehicleCountByTollPlazaService createVehicleCountByTollPlazaService
+            ICreateVehicleCountByTollPlazaService createVehicleCountByTollPlazaService,
+            ICreateHourlyRevenueService createHourlyRevenueService,
+            ICreateTopEarningTollPlazaService createTopEarningTollPlazaService
         )
         {
             _logger = logger;
             _createVehicleCountByTollPlazaService = createVehicleCountByTollPlazaService;
+            _createHourlyRevenueService = createHourlyRevenueService;
+            _createTopEarningTollPlazaService = createTopEarningTollPlazaService;
         }
 
         public async Task Handle(CreateReportMessage message)
@@ -26,7 +31,7 @@ namespace Thunders.TechTest.ApiService.App.Consumer
             try
             {
                 _logger.LogInformation("ReportConsumer started");
-                _logger.LogInformation($"Mensagem recebida: {message}");
+                _logger.LogInformation($"Message received: {message}");
 
                 switch (message.Type)
                 {
@@ -43,7 +48,7 @@ namespace Thunders.TechTest.ApiService.App.Consumer
                         break;
 
                     case ReportType.TopEarningTollPlaza:
-                        var createTopEarningTollPlazaResult = await _createVehicleCountByTollPlazaService.Execute(message.Id);
+                        var createTopEarningTollPlazaResult = await _createTopEarningTollPlazaService.Execute(message.Id);
 
                         if (createTopEarningTollPlazaResult.IsFailure)
                         {
@@ -54,7 +59,7 @@ namespace Thunders.TechTest.ApiService.App.Consumer
                         break;
 
                     case ReportType.HourlyRevenueByCity:
-                        var createHourlyRevenueByCityResult = await _createVehicleCountByTollPlazaService.Execute(message.Id);
+                        var createHourlyRevenueByCityResult = await _createHourlyRevenueService.Execute(message.Id);
 
                         if (createHourlyRevenueByCityResult.IsFailure)
                         {
