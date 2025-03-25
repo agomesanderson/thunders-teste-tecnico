@@ -8,12 +8,12 @@ namespace Thunders.TechTest.ApiService.App.Services
 {
     public class CreateTopEarningTollPlazaService : ICreateTopEarningTollPlazaService
     {
-        private readonly ILogger<CreateHourlyRevenueService> _logger;
+        private readonly ILogger<CreateTopEarningTollPlazaService> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
 
         public CreateTopEarningTollPlazaService(
-            ILogger<CreateHourlyRevenueService> logger,
+            ILogger<CreateTopEarningTollPlazaService> logger,
             IUnitOfWork unitOfWork,
             IConfiguration configuration
         )
