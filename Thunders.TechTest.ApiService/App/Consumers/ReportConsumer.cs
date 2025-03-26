@@ -33,41 +33,19 @@ namespace Thunders.TechTest.ApiService.App.Consumer
                 _logger.LogInformation("ReportConsumer started");
                 _logger.LogInformation($"Message received: {message}");
 
-                switch (message.Type)
+                var result = message.Type switch
                 {
-                    case ReportType.VehicleCountByTollPlaza:
-                        var createVehicleCountByTollPlazaServiceResult = await _createVehicleCountByTollPlazaService.Execute(message.Id);
+                    ReportType.VehicleCountByTollPlaza => await _createVehicleCountByTollPlazaService.Execute(message.Id),
+                    ReportType.TopEarningTollPlaza => await _createTopEarningTollPlazaService.Execute(message.Id),
+                    ReportType.HourlyRevenueByCity => await _createHourlyRevenueService.Execute(message.Id),
+                    _ => throw new ArgumentOutOfRangeException(nameof(message.Type), $"Unsupported report type: {message.Type}")
+                };
 
-                        if (createVehicleCountByTollPlazaServiceResult.IsFailure)
-                        {
-                            var errors = string.Join("\n", createVehicleCountByTollPlazaServiceResult.Errors);
-                            _logger.LogError(errors);
-                            throw new Exception(errors);
-                        }
-
-                        break;
-
-                    case ReportType.TopEarningTollPlaza:
-                        var createTopEarningTollPlazaResult = await _createTopEarningTollPlazaService.Execute(message.Id);
-
-                        if (createTopEarningTollPlazaResult.IsFailure)
-                        {
-                            var errors = string.Join("\n", createTopEarningTollPlazaResult.Errors);
-                            _logger.LogError(errors);
-                            throw new Exception(errors);
-                        }
-                        break;
-
-                    case ReportType.HourlyRevenueByCity:
-                        var createHourlyRevenueByCityResult = await _createHourlyRevenueService.Execute(message.Id);
-
-                        if (createHourlyRevenueByCityResult.IsFailure)
-                        {
-                            var errors = string.Join("\n", createHourlyRevenueByCityResult.Errors);
-                            _logger.LogError(errors);
-                            throw new Exception(errors);
-                        }
-                        break;
+                if (result.IsFailure)
+                {
+                    var errors = string.Join("\n", result.Errors);
+                    _logger.LogError(errors);
+                    throw new Exception(errors);
                 }
 
                 _logger.LogInformation("ReportConsumer finished");
